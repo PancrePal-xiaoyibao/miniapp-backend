@@ -1,0 +1,36 @@
+{
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "medical_ai",
+        "user": "postgres",
+        "password": "your_password"
+    },
+    "fastgpt": {
+        "base_url": "https://fastgpt-api-url",
+        "api_key": "your_fastgpt_api_key"
+    },
+    "tencent_cloud": {
+        "secret_id": "your_secret_id",
+        "secret_key": "your_secret_key",
+        "region": "ap-guangzhou",
+        "bucket": "your-bucket-name"
+    },
+    "sealos": {
+        "endpoint": "your_sealos_endpoint",
+        "access_key": "your_access_key",
+        "secret_key": "your_secret_key",
+        "bucket": "your-bucket-name"
+    },
+    "server": {
+        "host": "0.0.0.0",
+        "port": 8000,
+        "debug": false,
+        "allowed_origins": ["*"]
+    },
+    "security": {
+        "secret_key": "your_jwt_secret_key",
+        "algorithm": "HS256",
+        "access_token_expire_minutes": 30
+    }
+}
