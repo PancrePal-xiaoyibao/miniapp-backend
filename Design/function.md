@@ -48,15 +48,6 @@ Python + FastgptAPI（RAG平台FASTGPT应用提供的指定接入baserul+API） 
         *   用户表 (users): id, username, password_hash, phone, wechat_openid (可选), created_at, updated_at, role (角色), ...
 2.  **AI 对话模块：**
     *   **功能：**
-        *   API 配置管理：
-            *   存储 FastGPT 和 Step-Vision 大模型的 API Base URL 和 Key。
-            *   提供后台界面进行 API 配置的增删改查操作。
-        *   对话通道配置：
-            *   支持文本对话和图片对话的单独 API 调用配置。
-            *   支持配置不同的对话模型。
-        *   对话角色 Prompt 设置：
-            *   存储每个对话角色的 Prompt，例如“你是一个专业的医疗助手”。
-            *   支持后台配置不同 Prompt。
         *   对话记录存储：
             *   按用户 ID 和会话 ID (session\_id) 存储对话记录。
             *   记录发送者 (用户/AI)、内容、时间戳等信息。
@@ -64,12 +55,10 @@ Python + FastgptAPI（RAG平台FASTGPT应用提供的指定接入baserul+API） 
             *   支持根据用户 ID 查询历史对话。
             *   支持根据会话 ID 查询特定对话。
             *   支持分页查询。
-        *   文件上传存储：
-            *  将用户上传的文件（图片）存储到 OSS。
+        *   文件/图片存储：
+            *  将用户上传的文件（图片）定期调度，存储到后端数据库。
     *   **数据存储：**
-        *   API 配置表 (api\_configs): id, name, type (fastgpt/step-vision), base\_url, api\_key, created\_at, updated\_at.
-        *   对话配置表 (dialog\_configs): id, role\_name, prompt, model\_name, text\_api\_id (关联api\_configs表), image\_api\_id (关联api\_configs表).
-        *   对话记录表 (chat\_logs): id, user\_id, session\_id, sender (user/ai), content, type (text/image), file\_url(如果type是image), created\_at.
+        *   对话记录表 (chat_logs): id, user_id, session_id, sender (user/ai), content, type (text/image), file_url(如果type是image), created_at.
 3.  **病友宝典模块：**
     *   **功能：**
         *   病友宝典内容管理：
@@ -121,7 +110,7 @@ Python + FastgptAPI（RAG平台FASTGPT应用提供的指定接入baserul+API） 
     *   `POST /api/chat/text`: 发送文本消息
     *   `POST /api/chat/image`: 发送图片消息
     *   `GET /api/chat/history`: 获取历史对话记录
-    *   `GET /api/chat/config`: 获取对话配置
+    *   `POST /api/chat/sync`: 同步对话记录
     *   `POST /api/chat/upload`: 上传文件
     *   `GET  /api/chat/upload/:fileId`: 获取上传文件的URL
 *   **病友宝典：**
